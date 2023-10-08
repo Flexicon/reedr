@@ -23,30 +23,38 @@
 
   .button.link {
     @apply text-primary-700 border-none focus:ring-primary-300
-          dark:focus:ring-primary-900;
+          bg-inherit hover:bg-gray-200 dark:focus:ring-primary-900;
   }
 
   .button.link[aria-current='true']:not(:hover) {
     @apply text-primary-800;
   }
 
-  .flash {
-    @apply p-3 mb-3 shadow rounded-md mx-auto sm:w-3/4 lg:w-1/2;
+  /* Flash Messages */
+  .flash-messages {
+    @apply flex flex-col items-center;
   }
 
-  .flash.warn, .flash.warning {
+  .flash {
+    @apply py-2 px-3 mb-3 font-medium shadow rounded-lg inline-block;
+  }
+
+  .flash.warn,
+  .flash.warning {
     @apply text-yellow-800 bg-yellow-50;
   }
 
-  .flash.alert, .flash.error {
+  .flash.alert,
+  .flash.error {
     @apply text-red-800 bg-red-100;
   }
 
-  .flash.info, .flash.notice {
+  .flash.info,
+  .flash.notice {
     @apply text-blue-900 bg-blue-100;
   }
 
   .flash.success {
-    @apply text-green-900 bg-green-100;
+    @apply text-green-700 bg-green-100;
   }
 }
