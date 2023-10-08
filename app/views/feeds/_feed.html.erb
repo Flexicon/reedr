@@ -1,0 +1,32 @@
+<div id="<%= dom_id feed %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= feed.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Sub title:</strong>
+    <%= feed.sub_title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Url:</strong>
+    <%= feed.url %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= feed.user_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Latest:</strong>
+    <%= feed.latest_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this feed", feed, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this feed', edit_feed_path(feed), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

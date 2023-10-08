@@ -1,0 +1,10 @@
+<div class="w-full">
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-3xl">Feeds</h1>
+    <%= link_to 'New feed', new_feed_path, class: "button primary" %>
+  </div>
+
+  <div id="feeds" class="min-w-full">
+    <%= render @feeds %>
+  </div>
+</div>

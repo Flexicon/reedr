@@ -16,11 +16,18 @@
   <div class="p-6">
     <nav class="mb-8 flex justify-between">
       <div class="text-3xl font-bold">
-        <a href="/" class="text-primary-700 dark:text-primary-400 -skew-y-12 block">Reedr</a>
+        <%= link_to root_path, class: 'text-primary-700 dark:text-primary-400 -skew-y-12 block' do %>
+          Reedr
+        <% end %>
       </div>
 
       <div class="flex items-center gap-3">
         <% if user_signed_in? %>
+          <%= link_to feeds_path, class: 'button link' do %>
+            <%= svg("list_icon", class: "w-6 h-6 mr-1") %>
+            <span>My Feeds</span>
+          <% end %>
+
           <%= link_to destroy_user_session_path, class: 'button', data: { 'turbo-method' => :delete } do %>
             <%= svg("sign_out", class: "w-6 h-6 mr-1") %>
             <span>Sign Out</span>
