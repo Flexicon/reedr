@@ -14,27 +14,32 @@
 <body class="bg-zinc-100 dark:bg-gray-900">
 <main class="container mx-auto mt-5 px-5">
   <div class="p-6">
-    <div class="mb-8 flex justify-between">
+    <nav class="mb-8 flex justify-between">
       <div class="text-3xl font-bold">
         <a href="/" class="text-primary-700 dark:text-primary-400 -skew-y-12 block">Reedr</a>
       </div>
 
       <div class="flex items-center gap-3">
-        <form method="post" action="/?/signout">
-          <%# TODO: conditionally render properly once auth is setup %>
-          <% if true %>
-            <button class="button">
-              <%= svg("sign_in", class: "w-6 h-6 mr-1") %>
-              <span>Sign In</span>
-            </button>
-          <% else %>
-            <button class="button">
-              <%= svg("sign_in", class: "w-6 h-6 mr-1") %>
-              <span>Sign Out</span>
-            </button>
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, class: 'button', data: { 'turbo-method' => :delete } do %>
+            <%= svg("sign_out", class: "w-6 h-6 mr-1") %>
+            <span>Sign Out</span>
           <% end %>
-        </form>
+        <% else %>
+          <%= link_to new_user_session_path, class: 'button' do %>
+            <%= svg("sign_in", class: "w-6 h-6 mr-1") %>
+            <span>Sign In</span>
+          <% end %>
+        <% end %>
       </div>
+    </nav>
+
+    <div class="flash-messages">
+      <% flash.each do |type, msg| %>
+        <div class="flash <%= type %>">
+          <%= msg %>
+        </div>
+      <% end %>
     </div>
 
     <%= yield %>
