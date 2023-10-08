@@ -1,72 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Reedr</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+<head>
+  <title>Reedr</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body class="bg-zinc-100 dark:bg-gray-900">
-    <main class="container mx-auto mt-5 px-5">
-      <div class="p-6">
-        <div class="mb-8 flex justify-between">
-          <div class="text-3xl font-bold">
-            <a href="/" class="text-primary-700 dark:text-primary-400 -skew-y-12 block">Reedr</a>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <form method="post" action="/?/signout">
-              <%# TODO: conditionally render properly once auth is setup %>
-              <% if true %>
-                <button class="button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-6 h-6"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
-                    />
-                  </svg>
-                  <span>Sign In</span>
-                </button>
-              <% else %>
-                <button class="button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-6 h-6"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
-                    />
-                  </svg>
-                  <span>Sign Out</span>
-                </button>
-              <% end %>
-            </form>
-          </div>
-        </div>
-
-        <%= yield %>
+<body class="bg-zinc-100 dark:bg-gray-900">
+<main class="container mx-auto mt-5 px-5">
+  <div class="p-6">
+    <div class="mb-8 flex justify-between">
+      <div class="text-3xl font-bold">
+        <a href="/" class="text-primary-700 dark:text-primary-400 -skew-y-12 block">Reedr</a>
       </div>
 
-      <footer class="p-6 text-center text-xs text-gray-500">Powered by ☕️ and 🍕</footer>
-    </main>
-  </body>
+      <div class="flex items-center gap-3">
+        <form method="post" action="/?/signout">
+          <%# TODO: conditionally render properly once auth is setup %>
+          <% if true %>
+            <button class="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"/>
+              </svg>
+              <span>Sign In</span>
+            </button>
+          <% else %>
+            <button class="button">
+              <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/>
+              </svg>
+              <span>Sign Out</span>
+            </button>
+          <% end %>
+        </form>
+      </div>
+    </div>
+
+    <%= yield %>
+  </div>
+
+  <footer class="p-6 text-center text-xs text-gray-500">Powered by ☕️ and 🍕</footer>
+</main>
+</body>
 </html>
