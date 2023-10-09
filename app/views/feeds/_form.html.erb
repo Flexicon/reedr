@@ -1,11 +1,15 @@
 <%= form_with(model: feed, class: "contents") do |form| %>
   <% if feed.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+    <div id="error_explanation" class="alert alert-error mt-3">
       <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
 
       <ul>
         <% feed.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <% if error.attribute == :url %>
+            <li><%= error.attribute.upcase %> <%= error.message %></li>
+          <% else %>
+            <li><%= error.full_message %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>

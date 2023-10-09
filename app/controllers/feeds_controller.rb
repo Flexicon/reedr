@@ -25,12 +25,12 @@ class FeedsController < ApplicationController
     @feed = UseCases::AddNewFeed.call(url: feed_params.fetch(:url), user: current_user)
 
     respond_to do |format|
-      if @feed.errors
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
-      else
+      if @feed.persisted?
         format.html { redirect_to feed_url(@feed), notice: 'Feed was successfully created.' }
         format.json { render :show, status: :created, location: @feed }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
     end
   end

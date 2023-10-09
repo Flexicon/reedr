@@ -23,7 +23,7 @@
 
       <div class="flex items-center gap-3">
         <% if user_signed_in? %>
-          <%= link_to feeds_path, class: 'button link' do %>
+          <%= link_to feeds_path, class: 'button link', aria: { current: current_page?(feeds_path) } do %>
             <%= svg("list_icon", class: "w-6 h-6 mr-1") %>
             <span>My Feeds</span>
           <% end %>
@@ -43,7 +43,7 @@
 
     <div class="flash-messages">
       <% flash.each do |type, msg| %>
-        <div class="flash <%= type %>">
+        <div class="flash flash-<%= type %>">
           <%= msg %>
         </div>
       <% end %>
