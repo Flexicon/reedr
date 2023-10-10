@@ -7,5 +7,7 @@ class Feed < ApplicationRecord
     scope: :user_id,
     message: 'has already been added',
     allow_blank: true
+  }, http_url: {
+    allow_blank: true
   }
 end
