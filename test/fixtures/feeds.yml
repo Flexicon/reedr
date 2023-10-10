@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  sub_title: MyString
-  url: MyString
+  title: Changelog Master Feed
+  sub_title: null
+  url: https://changelog.com/master/feed
   user: one
-  latest_id: MyString
+  latest_id: null
 
 two:
-  title: MyString
-  sub_title: MyString
-  url: MyString
-  user: two
-  latest_id: MyString
+  title: Hogwarts Digital Newsletter
+  sub_title: Unlocking the Magic, One Byte at a Time!
+  url: https://www.hogwarts.edu/news/rss
+  user: one
+  latest_id: null
