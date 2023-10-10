@@ -3,8 +3,12 @@
 require 'test_helper'
 
 class FeedsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @feed = feeds(:one)
+    @feed = feeds(:one) # TODO: move this to factory bot instead of fixtures
+    @user = FactoryBot.create(:user)
+    sign_in @user
   end
 
   test 'should get index' do
@@ -19,9 +23,11 @@ class FeedsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create feed' do
     assert_difference('Feed.count') do
-      post feeds_url,
-           params: { feed: { latest_id: @feed.latest_id, sub_title: @feed.sub_title, title: @feed.title, url: @feed.url,
-                             user_id: @feed.user_id } }
+      post feeds_url, params: {
+        feed: {
+          url: @feed.url
+        }
+      }
     end
 
     assert_redirected_to feed_url(Feed.last)
@@ -38,9 +44,16 @@ class FeedsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update feed' do
-    patch feed_url(@feed),
-          params: { feed: { latest_id: @feed.latest_id, sub_title: @feed.sub_title, title: @feed.title, url: @feed.url,
-                            user_id: @feed.user_id } }
+    assert_changes '@feed.reload.title' do
+      patch feed_url(@feed), params: {
+        feed: {
+          title: "#{@feed.title} (1)",
+          sub_title: @feed.sub_title,
+          url: @feed.url
+        }
+      }
+    end
+
     assert_redirected_to feed_url(@feed)
   end
 
