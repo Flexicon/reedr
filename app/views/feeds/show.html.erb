@@ -1,11 +1,13 @@
-<div class="mx-auto md:w-2/3 w-full flex">
+<div class="mx-auto md:w-2/3 w-full">
   <div class="mx-auto">
     <%= render @feed %>
 
-    <%= link_to 'Edit this feed', edit_feed_path(@feed), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this feed', feed_path(@feed), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div class="flex items-center">
+      <%= link_to 'Edit', edit_feed_path(@feed), class: "button link" %>
+      <%= link_to 'Back', feeds_path, class: "ml-2 button link" %>
+      <div class="inline-block ml-2">
+        <%= button_to 'Destroy', feed_path(@feed), method: :delete, class: "button danger" %>
+      </div>
     </div>
-    <%= link_to 'Back to feeds', feeds_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

@@ -14,7 +14,7 @@
 <body class="bg-zinc-100 dark:bg-gray-900">
 <main class="container mx-auto mt-5 px-5">
   <div class="p-6">
-    <nav class="mb-8 flex justify-between">
+    <nav class="mb-10 flex justify-between">
       <div class="text-3xl font-bold">
         <%= link_to root_path, class: 'text-primary-700 dark:text-primary-400 -skew-y-12 block' do %>
           Reedr
@@ -24,17 +24,17 @@
       <div class="flex items-center gap-3">
         <% if user_signed_in? %>
           <%= link_to feeds_path, class: 'button link', aria: { current: current_page?(feeds_path) } do %>
-            <%= svg("list_icon", class: "w-6 h-6 mr-1") %>
+            <%= svg("list_icon", class: "mr-1") %>
             <span>My Feeds</span>
           <% end %>
 
           <%= link_to destroy_user_session_path, class: 'button', data: { 'turbo-method' => :delete } do %>
-            <%= svg("sign_out", class: "w-6 h-6 mr-1") %>
+            <%= svg("sign_out", class: "mr-1") %>
             <span>Sign Out</span>
           <% end %>
         <% else %>
           <%= link_to new_user_session_path, class: 'button' do %>
-            <%= svg("sign_in", class: "w-6 h-6 mr-1") %>
+            <%= svg("sign_in", class: "mr-1") %>
             <span>Sign In</span>
           <% end %>
         <% end %>

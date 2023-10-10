@@ -25,8 +25,8 @@
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this feed", feed, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this feed', edit_feed_path(feed), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "View", feed, class: "button" %>
+    <%= link_to 'Edit', edit_feed_path(feed), class: "button ml-2" %>
     <hr class="mt-6">
   <% end %>
 </div>
