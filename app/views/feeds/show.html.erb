@@ -2,12 +2,7 @@
   <div class="mx-auto">
     <%= render @feed %>
 
-    <div class="flex items-center">
-      <%= link_to 'Edit', edit_feed_path(@feed), class: "button link" %>
-      <%= link_to 'Back', feeds_path, class: "ml-2 button link" %>
-      <div class="inline-block ml-2">
-        <%= button_to 'Destroy', feed_path(@feed), method: :delete, class: "button danger" %>
-      </div>
-    </div>
+    <%= link_to 'Edit', edit_feed_path(@feed), class: "button link" %>
+    <%= link_to 'Back to Feeds', feeds_path, class: "ml-2 button link" %>
   </div>
 </div>

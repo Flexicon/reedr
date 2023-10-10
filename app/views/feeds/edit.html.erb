@@ -3,6 +3,9 @@
 
   <%= render "form", feed: @feed %>
 
-  <%= link_to "View feed", @feed, class: "ml-2 button link" %>
-  <%= link_to "Back to feeds", feeds_path, class: "ml-2 button link" %>
+  <div class="inline-block ml-2">
+    <%= button_to 'Destroy', feed_path(@feed), method: :delete, class: "button danger inverted" %>
+  </div>
+  <%= link_to "View Feed", @feed, class: "ml-2 button link" %>
+  <%= link_to "Back to Feeds", feeds_path, class: "ml-2 button link" %>
 </div>
