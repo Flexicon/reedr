@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_08_190223) do
     t.string "latest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["url", "user_id"], name: "index_feeds_on_url_and_user_id", unique: true
+    t.index ["url"], name: "index_feeds_on_url"
     t.index ["user_id"], name: "index_feeds_on_user_id"
   end
 
