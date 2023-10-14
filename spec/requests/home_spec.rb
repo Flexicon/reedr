@@ -2,11 +2,11 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Home', type: :request do
+RSpec.describe 'Home' do
   describe 'GET /' do
     it 'sees the home page' do
       get root_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
       expect(response.body).to include('Reedr')
       expect(response.body).to match(/Stay Groovy,<br>\s+Stay Updated/)
     end
