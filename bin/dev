@@ -10,4 +10,12 @@ if ! gem list foreman -i --silent; then
   gem install foreman
 fi
 
-exec foreman start -f Procfile.dev "$@"
+foreman start -f Procfile.dev "$@"
+exit_code=$?
+
+if docker compose 2>&1 &>/dev/null; then
+  echo "Stopping docker containers..."
+  docker compose stop
+fi
+
+exit $exit_code
