@@ -22,11 +22,11 @@ class FeedsController < ApplicationController
 
   # POST /feeds or /feeds.json
   def create
-    @feed = UseCases::AddNewFeed.call(url: feed_params.fetch(:url), user: current_user)
+    @feed = add_new_feed
 
     respond_to do |format|
       if @feed.persisted?
-        format.html { redirect_to feed_url(@feed), notice: 'Feed was successfully created.' }
+        format.html { redirect_to feed_url(@feed), notice: I18n.t('feeds.feed_created') }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class FeedsController < ApplicationController
   def update
     respond_to do |format|
       if @feed.update(feed_params)
-        format.html { redirect_to feed_url(@feed), notice: 'Feed was successfully updated.' }
+        format.html { redirect_to feed_url(@feed), notice: I18n.t('feeds.feed_updated') }
         format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class FeedsController < ApplicationController
     @feed.destroy
 
     respond_to do |format|
-      format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
+      format.html { redirect_to feeds_url, notice: I18n.t('feeds.feed_destroyed') }
       format.json { head :no_content }
     end
   end
@@ -68,5 +68,9 @@ class FeedsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def feed_params
     params.require(:feed).permit(:title, :sub_title, :url)
+  end
+
+  def add_new_feed
+    UseCases::AddNewFeed.call(url: feed_params.fetch(:url), user: current_user)
   end
 end

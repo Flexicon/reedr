@@ -5,7 +5,7 @@ class Feed < ApplicationRecord
 
   validates :url, presence: true, uniqueness: {
     scope: :user_id,
-    message: 'has already been added',
+    message: I18n.t('feeds.feed_uniqueness_validation_message'),
     allow_blank: true
   }, http_url: {
     allow_blank: true
