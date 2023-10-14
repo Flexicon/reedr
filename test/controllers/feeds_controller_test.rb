@@ -6,7 +6,7 @@ class FeedsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @feed = feeds(:one) # TODO: move this to factory bot instead of fixtures
+    @feed = FactoryBot.create(:feed)
     @user = FactoryBot.create(:user)
     sign_in @user
   end
