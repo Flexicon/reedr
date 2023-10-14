@@ -11,11 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_10_08_190223) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "feeds", force: :cascade do |t|
     t.string "title", null: false
     t.string "sub_title"
     t.string "url", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "latest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
