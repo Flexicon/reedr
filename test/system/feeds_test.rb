@@ -18,33 +18,33 @@ class FeedsTest < ApplicationSystemTestCase
 
   test 'should create feed' do
     visit feeds_url
-    click_on 'New feed'
+    click_link 'New feed'
 
     fill_in 'Url', with: @feed.url
-    click_on 'Create Feed'
+    click_button 'Create Feed'
 
     assert_text 'Feed was successfully created'
-    click_on 'Back'
+    click_link 'Back'
   end
 
   test 'should update Feed' do
     visit feed_url(@feed)
-    click_on 'Edit', match: :first
+    click_link 'Edit', match: :first
 
     fill_in 'Title', with: "#{@feed.title} (1)"
     fill_in 'Sub title', with: @feed.sub_title
     fill_in 'Url', with: 'https://dummy.url.io/'
-    click_on 'Update Feed'
+    click_button 'Update Feed'
 
     assert_text 'Feed was successfully updated'
     assert_text "#{@feed.title} (1)"
     assert_text 'https://dummy.url.io/'
-    click_on 'Back'
+    click_link 'Back'
   end
 
   test 'should destroy Feed' do
     visit edit_feed_url(@feed)
-    click_on 'Destroy', match: :first
+    click_button 'Destroy', match: :first
 
     assert_text 'Feed was successfully destroyed'
   end
