@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
+if docker compose 2>&1 &>/dev/null; then
+  echo "Starting docker containers if necessary..."
+  docker compose up -d
+fi
+
 if ! gem list foreman -i --silent; then
   echo "Installing foreman..."
   gem install foreman
