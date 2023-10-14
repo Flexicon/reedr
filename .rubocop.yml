@@ -3,6 +3,7 @@ AllCops:
   Exclude:
     - 'bin/**/*'
     - 'db/schema.rb'
+    - 'vendor/**/*.rb'
 
 Style/Documentation:
   Enabled: false
