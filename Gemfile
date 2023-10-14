@@ -63,6 +63,8 @@ group :development do
   gem 'brakeman'
   gem 'bundler-audit'
   gem 'rubocop'
+  gem 'rubocop-discourse'
+  gem 'rubocop-rails'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
