@@ -30,4 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  feeds:
+    feed_created: Feed was successfully created.
+    feed_updated: Feed was successfully updated.
+    feed_destroyed: Feed was successfully destroyed.
+    feed_uniqueness_validation_message: has already been added
