@@ -30,7 +30,7 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
-        run: bin/rake && bin/rails test
+        run: bin/bundle exec rspec && bin/rails test
 
   lint:
     runs-on: ubuntu-latest
