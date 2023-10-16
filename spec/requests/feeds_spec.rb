@@ -18,7 +18,7 @@ RSpec.describe 'Feeds' do
   context 'when logged in' do
     include_context 'when logged in'
 
-    describe 'GET /feeds authenticated' do
+    describe 'GET /feeds' do
       it 'can access feeds page' do
         get feeds_path
         expect(response).to have_http_status(:ok)
@@ -30,7 +30,7 @@ RSpec.describe 'Feeds' do
       end
     end
 
-    describe 'POST /feeds authenticated' do
+    describe 'POST /feeds' do
       let(:feed_payload) { { url: 'https://foo.bar.io/feed.rss' } }
 
       it 'can create a new feed' do
@@ -44,7 +44,33 @@ RSpec.describe 'Feeds' do
       end
     end
 
-    describe 'GET /feeds/:id authenticated' do
+    describe 'POST /feeds with feed url already existing for user' do
+      include_context 'when logged in' do
+        let(:user) { create(:user) }
+      end
+      let(:feed_payload) { { url: 'https://foo.bar.io/feed.rss' } }
+
+      before do
+        create(:feed, url: feed_payload[:url], user:)
+      end
+
+      it 'does not create another feed' do
+        expect { post feeds_url, params: { feed: feed_payload } }
+          .not_to change(Feed, :count)
+      end
+
+      it 'does not get redirected' do
+        post feeds_url, params: { feed: feed_payload }
+        expect(response).not_to have_http_status(:redirect)
+      end
+
+      it 'displays the appropriate error message' do
+        post feeds_url, params: { feed: feed_payload }
+        expect(response.body).to include(I18n.t('feeds.feed_uniqueness_validation_message'))
+      end
+    end
+
+    describe 'GET /feeds/:id' do
       let(:feed) { create(:feed) }
 
       it 'can can access existing feed' do
@@ -58,7 +84,7 @@ RSpec.describe 'Feeds' do
       end
     end
 
-    describe 'GET /feeds/:id/edit authenticated' do
+    describe 'GET /feeds/:id/edit' do
       let(:feed) { create(:feed) }
 
       it 'can can access form for existing feed' do
