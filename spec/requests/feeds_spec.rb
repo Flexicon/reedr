@@ -11,7 +11,7 @@ RSpec.describe 'Feeds' do
 
     it 'gets redirected to login page url' do
       get feeds_path
-      expect(response.headers['Location']).to eq('http://www.example.com/auth/sign_in')
+      expect(response.headers['Location']).to eq(new_user_session_url)
     end
   end
 
