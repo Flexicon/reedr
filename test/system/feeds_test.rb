@@ -44,7 +44,9 @@ class FeedsTest < ApplicationSystemTestCase
 
   test 'should destroy Feed' do
     visit edit_feed_url(@feed)
-    click_button 'Destroy', match: :first
+    accept_alert 'Are you sure you wish to delete this feed?' do
+      click_button 'Destroy', match: :first
+    end
 
     assert_text 'Feed was successfully destroyed'
   end
