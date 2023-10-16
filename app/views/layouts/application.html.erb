@@ -28,7 +28,7 @@
             <span>My Feeds</span>
           <% end %>
 
-          <%= link_to destroy_user_session_path, class: 'button', data: { 'turbo-method' => :delete } do %>
+          <%= button_to destroy_user_session_path, class: 'button', method: :delete do %>
             <%= svg("sign_out", class: "mr-1") %>
             <span>Sign Out</span>
           <% end %>
