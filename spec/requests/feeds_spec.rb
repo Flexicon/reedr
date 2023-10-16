@@ -98,7 +98,7 @@ RSpec.describe 'Feeds' do
       end
     end
 
-    describe 'PATCH /feeds/:id authenticated' do
+    describe 'PATCH /feeds/:id' do
       let(:feed) { create(:feed) }
       let(:update_feed_payload) { { title: 'New Feed Title' } }
 
@@ -114,7 +114,7 @@ RSpec.describe 'Feeds' do
       end
     end
 
-    describe 'DELETE /feeds/:id authenticated' do
+    describe 'DELETE /feeds/:id' do
       let!(:feed) { create(:feed) }
 
       it 'can delete a feed' do
