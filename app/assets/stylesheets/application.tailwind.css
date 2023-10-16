@@ -47,6 +47,10 @@
     @apply border-none bg-inherit hover:bg-gray-50;
   }
 
+  .button.link.danger {
+    @apply text-red-600 hover:text-white hover:bg-red-500;
+  }
+
   nav .button.link {
     @apply text-primary-700 border-none focus:ring-primary-300
           bg-inherit hover:bg-gray-50 dark:focus:ring-primary-900;
