@@ -21,3 +21,8 @@ Lint/MissingSuper:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'config/**/*.rb'
