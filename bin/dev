@@ -5,7 +5,4 @@ if ! gem list foreman -i --silent; then
   gem install foreman
 fi
 
-foreman start -f Procfile.dev "$@"
-exit_code=$?
-
-exit $exit_code
+exec foreman start -f Procfile.dev "$@"
