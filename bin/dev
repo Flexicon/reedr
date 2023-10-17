@@ -1,10 +1,5 @@
 #!/usr/bin/env sh
 
-if docker compose 2>&1 &>/dev/null; then
-  echo "Starting docker containers if necessary..."
-  docker compose up -d
-fi
-
 if ! gem list foreman -i --silent; then
   echo "Installing foreman..."
   gem install foreman
@@ -12,10 +7,5 @@ fi
 
 foreman start -f Procfile.dev "$@"
 exit_code=$?
-
-if docker compose 2>&1 &>/dev/null; then
-  echo "Stopping docker containers..."
-  docker compose stop
-fi
 
 exit $exit_code
