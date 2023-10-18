@@ -8,7 +8,7 @@ class RSSFeedFetcher
   end
 
   def fetch(url)
-    feed = RSS::Parser.parse(Faraday.get(url).body)
+    feed = RSS::Parser.parse(Faraday.get(url).body, false)
     RSSFeed.new(feed:, is_atom: feed.is_a?(RSS::Atom::Feed))
   end
 end
