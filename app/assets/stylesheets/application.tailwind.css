@@ -99,6 +99,10 @@
           px-3 py-2 mt-2 w-full;
   }
 
+  form .form-field:disabled {
+    @apply cursor-not-allowed text-gray-500 bg-gray-200;
+  }
+
   form .checkbox > input[type='checkbox'] {
     @apply w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded
           focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800
