@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_08_190223) do
 
   create_table "feeds", force: :cascade do |t|
     t.string "title", null: false
-    t.string "sub_title"
+    t.string "subtitle"
     t.string "url", null: false
     t.bigint "user_id", null: false
     t.string "latest_id"
