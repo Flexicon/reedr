@@ -38,7 +38,7 @@ class FeedsController < ApplicationController
   # PATCH/PUT /feeds/1 or /feeds/1.json
   def update
     respond_to do |format|
-      if @feed.update(feed_params)
+      if @feed.update(update_feed_params)
         format.html { redirect_to feed_url(@feed), notice: I18n.t('feeds.feed_updated') }
         format.json { render :show, status: :ok, location: @feed }
       else
@@ -66,11 +66,15 @@ class FeedsController < ApplicationController
   end
 
   # Only allow a list of trusted parameters through.
-  def feed_params
-    params.require(:feed).permit(:title, :sub_title, :url)
+  def update_feed_params
+    params.require(:feed).permit(:title, :subtitle)
+  end
+
+  def create_feed_params
+    params.require(:feed).permit(:url)
   end
 
   def add_new_feed
-    UseCases::AddNewFeed.call(url: feed_params.fetch(:url), user: current_user)
+    UseCases::AddNewFeed.call(url: create_feed_params.fetch(:url), user: current_user)
   end
 end

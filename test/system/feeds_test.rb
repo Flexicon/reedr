@@ -6,8 +6,9 @@ class FeedsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @feed = FactoryBot.create(:feed)
+    @sample_feed_url = 'https://www.rssboard.org/files/sample-rss-2.xml'
     @user = FactoryBot.create(:user)
+    @feed = FactoryBot.create(:feed, user: @user)
     sign_in @user
   end
 
@@ -20,7 +21,7 @@ class FeedsTest < ApplicationSystemTestCase
     visit feeds_url
     click_link 'New feed'
 
-    fill_in 'Url', with: @feed.url
+    fill_in 'Url', with: @sample_feed_url
     click_button 'Create Feed'
 
     assert_text 'Feed was successfully created'
@@ -32,13 +33,12 @@ class FeedsTest < ApplicationSystemTestCase
     click_link 'Edit', match: :first
 
     fill_in 'Title', with: "#{@feed.title} (1)"
-    fill_in 'Sub title', with: @feed.sub_title
-    fill_in 'Url', with: 'https://dummy.url.io/'
+    fill_in 'Subtitle', with: @feed.subtitle
     click_button 'Update Feed'
 
     assert_text 'Feed was successfully updated'
     assert_text "#{@feed.title} (1)"
-    assert_text 'https://dummy.url.io/'
+    assert_text @feed.url
     click_link 'Back'
   end
 

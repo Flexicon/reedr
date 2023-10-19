@@ -31,7 +31,8 @@ RSpec.describe 'Feeds' do
     end
 
     describe 'POST /feeds' do
-      let(:feed_payload) { { url: 'https://foo.bar.io/feed.rss' } }
+      # let(:feed_payload) { { url: 'https://foo.bar.io/feed.rss' } } # TODO: put this back in once VCR is setup
+      let(:feed_payload) { { url: 'https://www.rssboard.org/files/sample-rss-092.xml' } }
 
       it 'can create a new feed' do
         expect { post feeds_url, params: { feed: feed_payload } }

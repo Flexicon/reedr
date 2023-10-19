@@ -9,8 +9,9 @@ FactoryBot.define do
 
   factory(:feed) do
     title { 'Hogwarts Digital Newsletter' }
-    sub_title { 'Unlocking the Magic, One Byte at a Time!' }
-    url { 'https://www.hogwarts.edu/news/rss' }
+    subtitle { 'Unlocking the Magic, One Byte at a Time!' }
+    # url { 'https://www.hogwarts.edu/news/rss' } # TODO: put this back in once VCR is setup
+    url { 'https://www.rssboard.org/files/sample-rss-092.xml' }
     user { association(:user) }
     latest_id { nil }
   end

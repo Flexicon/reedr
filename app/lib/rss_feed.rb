@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 class RSSFeed
-  attr_reader :title, :sub_title, :items
+  attr_reader :title, :subtitle, :items
 
   def initialize(feed:, is_atom:)
     if is_atom
       @title = feed.title.content
-      @sub_title = feed.subtitle.content
+      @subtitle = feed.subtitle.content
       @items = build_atom_items(feed.items)
     else
       @title = feed.channel.title
-      @sub_title = feed.channel.description
+      @subtitle = feed.channel.description
       @items = build_rss_items(feed.items)
     end
   end
@@ -34,10 +34,10 @@ class RSSFeed
   end
 
   def build_atom_item(item)
-    RSSFeedItem.new(item.id.content, item.title.content, item.link.href, item.summary.content)
+    RSSFeedItem.new(item.id&.content, item.title.content, item.link.href, item.summary&.content)
   end
 
   def build_rss_item(item)
-    RSSFeedItem.new(item.guid.content, item.title, item.link, item.description)
+    RSSFeedItem.new(item.guid&.content, item.title, item.link, item.description)
   end
 end

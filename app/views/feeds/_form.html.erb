@@ -22,14 +22,14 @@
     </div>
 
     <div class="my-5">
-      <%= form.label :sub_title, class: 'capitalize' %>
-      <%= form.text_field :sub_title, class: "form-field" %>
+      <%= form.label :subtitle, class: 'capitalize' %>
+      <%= form.text_field :subtitle, class: "form-field" %>
     </div>
   <% end %>
 
   <div class="my-5">
     <%= form.label :url, class: 'uppercase' %>
-    <%= form.text_field :url, class: "form-field" %>
+    <%= form.text_field :url, class: "form-field", disabled: feed.persisted? %>
   </div>
 
   <div class="inline">
