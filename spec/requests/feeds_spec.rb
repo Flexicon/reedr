@@ -31,16 +31,19 @@ RSpec.describe 'Feeds' do
     end
 
     describe 'POST /feeds' do
-      # let(:feed_payload) { { url: 'https://foo.bar.io/feed.rss' } } # TODO: put this back in once VCR is setup
-      let(:feed_payload) { { url: 'https://www.rssboard.org/files/sample-rss-092.xml' } }
+      let(:feed_payload) { { url: 'https://foo.bar.io/feed.rss' } }
 
       it 'can create a new feed' do
-        expect { post feeds_url, params: { feed: feed_payload } }
-          .to change(Feed, :count).from(0).to(1)
+        VCR.use_cassette('fetch_foo_bar_rss_feed') do
+          expect { post feeds_url, params: { feed: feed_payload } }
+            .to change(Feed, :count).from(0).to(1)
+        end
       end
 
       it 'gets redirected to feed url' do
-        post feeds_url, params: { feed: feed_payload }
+        VCR.use_cassette('fetch_foo_bar_rss_feed') do
+          post feeds_url, params: { feed: feed_payload }
+        end
         expect(response).to redirect_to(feed_url(Feed.last))
       end
     end

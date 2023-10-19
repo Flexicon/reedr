@@ -6,10 +6,16 @@ class FeedsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @sample_feed_url = 'https://www.rssboard.org/files/sample-rss-2.xml'
+    @sample_feed_url = 'https://foo.bar.io/feed.rss'
     @user = FactoryBot.create(:user)
     @feed = FactoryBot.create(:feed, user: @user)
     sign_in @user
+
+    VCR.insert_cassette('fetch_foo_bar_rss_feed')
+  end
+
+  teardown do
+    VCR.eject_cassette
   end
 
   test 'visiting the index' do
