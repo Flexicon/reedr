@@ -3,10 +3,11 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  after_action :verify_policy_scoped, only: %i[index show edit update destroy]
 
   # GET /feeds or /feeds.json
   def index
-    @feeds = Feed.all
+    @feeds = policy_scope(Feed).all
   end
 
   # GET /feeds/1 or /feeds/1.json
@@ -62,7 +63,7 @@ class FeedsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_feed
-    @feed = Feed.find(params[:id])
+    @feed = policy_scope(Feed).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
