@@ -16,7 +16,10 @@ RSpec.describe 'Feeds' do
   end
 
   context 'when logged in' do
-    include_context 'when logged in'
+    include_context 'when logged in' do
+      let(:user) { create(:user) }
+    end
+    let(:feed) { create(:feed, user:) }
 
     describe 'GET /feeds' do
       it 'can access feeds page' do
@@ -49,9 +52,6 @@ RSpec.describe 'Feeds' do
     end
 
     describe 'POST /feeds with feed url already existing for user' do
-      include_context 'when logged in' do
-        let(:user) { create(:user) }
-      end
       let(:feed_payload) { { url: 'https://foo.bar.io/feed.rss' } }
 
       before do
@@ -75,8 +75,6 @@ RSpec.describe 'Feeds' do
     end
 
     describe 'GET /feeds/:id' do
-      let(:feed) { create(:feed) }
-
       it 'can can access existing feed' do
         get feed_path(feed)
         expect(response).to have_http_status(:ok)
@@ -89,8 +87,6 @@ RSpec.describe 'Feeds' do
     end
 
     describe 'GET /feeds/:id/edit' do
-      let(:feed) { create(:feed) }
-
       it 'can can access form for existing feed' do
         get edit_feed_path(feed)
         expect(response).to have_http_status(:ok)
@@ -103,7 +99,6 @@ RSpec.describe 'Feeds' do
     end
 
     describe 'PATCH /feeds/:id' do
-      let(:feed) { create(:feed) }
       let(:update_feed_payload) { { title: 'New Feed Title' } }
 
       it 'can update existing feed' do
@@ -119,7 +114,7 @@ RSpec.describe 'Feeds' do
     end
 
     describe 'DELETE /feeds/:id' do
-      let!(:feed) { create(:feed) }
+      before { feed }
 
       it 'can delete a feed' do
         expect { delete feed_url(feed) }
