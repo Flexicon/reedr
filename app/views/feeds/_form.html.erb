@@ -33,6 +33,6 @@
   </div>
 
   <div class="inline">
-    <%= form.submit class: "button primary" %>
+    <%= form.submit feed.new_record? ? "Submit" : "Update", class: "button primary" %>
   </div>
 <% end %>

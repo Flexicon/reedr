@@ -25,10 +25,10 @@ class FeedsTest < ApplicationSystemTestCase
 
   test 'should create feed' do
     visit feeds_url
-    click_link 'New feed'
+    click_link 'Add feed'
 
     fill_in 'Url', with: @sample_feed_url
-    click_button 'Create Feed'
+    click_button 'Submit'
 
     assert_text 'Feed was successfully created'
     click_link 'Back'
@@ -40,7 +40,7 @@ class FeedsTest < ApplicationSystemTestCase
 
     fill_in 'Title', with: "#{@feed.title} (1)"
     fill_in 'Subtitle', with: @feed.subtitle
-    click_button 'Update Feed'
+    click_button 'Update'
 
     assert_text 'Feed was successfully updated'
     assert_text "#{@feed.title} (1)"
