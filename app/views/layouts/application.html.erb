@@ -43,8 +43,11 @@
 
     <div class="flash-messages">
       <% flash.each do |type, msg| %>
-        <div class="flash flash-<%= type %>">
+        <div class="flash flash-<%= type %>" data-controller="flash-message">
           <%= msg %>
+          <button class="close" data-action="click->flash-message#yeet">
+            <%= svg("close") %>
+          </button>
         </div>
       <% end %>
     </div>
