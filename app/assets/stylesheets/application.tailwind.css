@@ -12,10 +12,6 @@
           dark:focus:ring-gray-800;
   }
 
-  .button > span:has(svg) {
-    @apply min-w-[1.5em] min-h-[1.5em];
-  }
-
   .button.large {
     @apply px-5 py-3;
   }
@@ -116,5 +112,19 @@
   /* Typography */
   .page-header {
     @apply font-bold text-3xl;
+  }
+
+  a.link:not(.button) {
+    @apply inline-flex items-center justify-center text-primary-800
+          hover:text-primary-600 hover:underline;
+  }
+
+  /* Elements */
+  .card {
+    @apply bg-white p-5 rounded shadow;
+  }
+
+  .icon {
+    @apply min-w-[1.5em] min-h-[1.5em];
   }
 }

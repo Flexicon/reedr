@@ -1,5 +1,6 @@
 <div class="mx-auto md:w-2/3 w-full">
   <div class="mx-auto">
+    <h1 class="page-header"><%= @feed.title %></h1>
     <%= render @feed %>
 
     <%= link_to 'Edit', edit_feed_path(@feed), class: "button link" %>
