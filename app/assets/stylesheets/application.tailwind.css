@@ -58,12 +58,16 @@
 
   /* Flash Messages and Alerts */
   .flash-messages {
-    @apply flex flex-col items-center;
+    @apply flex flex-col items-center w-full px-5 sm:px-0 fixed top-12 left-0 pointer-events-none;
+  }
+
+  .flash-messages .flash {
+    @apply max-w-[500px];
   }
 
   .flash,
   .alert {
-    @apply py-2 px-3 mb-3 font-medium shadow rounded-lg inline-block;
+    @apply py-2 px-3 mb-3 font-medium shadow rounded-lg inline-block pointer-events-auto;
   }
 
   .flash.flash-warn,
