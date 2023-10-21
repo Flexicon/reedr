@@ -1,32 +1,26 @@
-<div id="<%= dom_id feed %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= feed.title %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Subtitle:</strong>
-    <%= feed.subtitle %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Url:</strong>
-    <%= feed.url %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= feed.user_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Latest:</strong>
-    <%= feed.latest_id %>
-  </p>
-
+<div id="<%= dom_id feed %>" class="card my-5 pb-1">
   <% if action_name != "show" %>
-    <%= link_to "View", feed, class: "button link" %>
-    <%= link_to 'Edit', edit_feed_path(feed), class: "button link ml-2" %>
-    <hr class="mt-6">
+    <%= link_to feed.title, feed, class: "link font-semibold text-lg" %>
+  <% end %>
+
+  <p class="mb-3">
+    <%= feed.subtitle || '-' %>
+  </p>
+
+  <p class="mt-3 mb-3 text-sm">
+    <%= link_to feed.url, class: "link", target: "_blank", rel: "noopener" do %>
+      <%= svg("rss", class: "mr-1 text-orange-500") %>
+      <span><%= feed.url %></span>
+    <% end %>
+  </p>
+
+  <p class="my-3 text-right text-xs text-gray-500">
+    <span title="Last updated at: <%= feed.updated_at %>">
+      <%= feed.updated_at %>
+    </span>
+  </p>
+
+  <% if action_name == "foo" %>
+    <%= link_to 'Edit', edit_feed_path(feed), class: "button link" %>
   <% end %>
 </div>
