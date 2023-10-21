@@ -62,7 +62,16 @@
   }
 
   .flash-messages .flash {
-    @apply max-w-[500px];
+    @apply relative pr-6 max-w-[500px];
+  }
+
+  .flash-messages .flash .close {
+    @apply absolute top-1 right-1 text-xs opacity-30 transition-all sm:hidden
+          hover:opacity-100 hover:scale-125;
+  }
+
+  .flash-messages .flash:hover .close {
+    @apply sm:block;
   }
 
   .flash,
@@ -129,6 +138,6 @@
   }
 
   .icon {
-    @apply min-w-[1.5em] min-h-[1.5em];
+    @apply min-w-[1.5em] min-h-[1.5em] inline-block;
   }
 }
