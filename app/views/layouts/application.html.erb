@@ -3,10 +3,11 @@
 <head>
   <title>Reedr</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="turbo-cache-control" content="no-preview">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag "https://ga.jspm.io/npm:aos@2.3.4/dist/aos.css", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "https://ga.jspm.io/npm:aos@2.3.4/dist/aos.css" %>
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
@@ -42,7 +43,7 @@
       </div>
     </nav>
 
-    <div class="flash-messages">
+    <div class="flash-messages" data-turbo-temporary>
       <% flash.each do |type, msg| %>
         <div class="flash flash-<%= type %>" data-controller="flash-message">
           <%= msg %>
@@ -56,7 +57,7 @@
     <%= yield %>
   </div>
 
-  <footer class="p-6 text-center text-xs text-gray-500" data-aos="fade" data-aos-delay="600">Powered by ☕️ and 🍕</footer>
+  <footer class="p-6 text-center text-xs text-gray-500">Powered by ☕️ and 🍕</footer>
 </main>
 </body>
 </html>
